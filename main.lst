@@ -1,11 +1,11 @@
-CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
+CCS PCM C Compiler, Version 5.025, 5967               25-Oct-17 12:50
 
                Filename:   C:\Users\Dung Phan\Documents\timerTEST\main.lst
 
-               ROM used:   187 words (2%)
+               ROM used:   175 words (2%)
                            Largest free fragment is 2048
-               RAM used:   20 (5%) at main() level
-                           21 (6%) worst case
+               RAM used:   14 (4%) at main() level
+                           15 (4%) worst case
                Stack used: 2 locations (0 in main + 2 for interrupts)
                Stack size: 8
 
@@ -80,7 +80,7 @@ CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
 .................... #FUSES NOLVP                    //No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
 ....................  
 .................... #use delay(crystal=20000000) 
-002F:  MOVLW  2F
+002F:  MOVLW  29
 0030:  MOVWF  04
 0031:  BCF    03.7
 0032:  MOVF   00,W
@@ -106,25 +106,13 @@ CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
 .................... #define BUT_1   input(PIN_B4) 
 .................... #define BUT_2   input(PIN_B5) 
 ....................  
-.................... int8 Q[]={0x7E,0xBD,0xDB,0xE7}; 
-*
-00A9:  MOVLW  7E
-00AA:  BCF    03.5
-00AB:  MOVWF  27
-00AC:  MOVLW  BD
-00AD:  MOVWF  28
-00AE:  MOVLW  DB
-00AF:  MOVWF  29
-00B0:  MOVLW  E7
-00B1:  MOVWF  2A
-.................... int a=0,b=0,c=0,d=0; 
+.................... int a=0,b=0; 
 .................... #INT_RB 
 .................... void interrupt() 
 .................... { 
 ....................    while(1) 
 ....................    { 
 ....................    if(BUT_1==1) 
-*
 0043:  BSF    03.5
 0044:  BSF    06.4
 0045:  BCF    03.5
@@ -133,7 +121,7 @@ CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
 ....................    { 
 ....................       a=1; 
 0048:  MOVLW  01
-0049:  MOVWF  2B
+0049:  MOVWF  27
 ....................       while(BUT_1==1) 
 004A:  BSF    03.5
 004B:  BSF    06.4
@@ -142,11 +130,11 @@ CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
 004E:  GOTO   053
 ....................          {delay_ms(1);} 
 004F:  MOVLW  01
-0050:  MOVWF  2F
+0050:  MOVWF  29
 0051:  CALL   02F
 0052:  GOTO   04A
 ....................       while(a==1) 
-0053:  DECFSZ 2B,W
+0053:  DECFSZ 27,W
 0054:  GOTO   06C
 ....................       { 
 ....................          OUTPUT_BIT(PIN_D5,1); 
@@ -166,7 +154,7 @@ CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
 005F:  GOTO   06B
 ....................             { 
 ....................                a=0; 
-0060:  CLRF   2B
+0060:  CLRF   27
 ....................                break; 
 0061:  GOTO   06C
 ....................                while(BUT_2==0) 
@@ -177,7 +165,7 @@ CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
 0066:  GOTO   06B
 ....................          {delay_ms(1);} 
 0067:  MOVLW  01
-0068:  MOVWF  2F
+0068:  MOVWF  29
 0069:  CALL   02F
 006A:  GOTO   062
 ....................             } 
@@ -193,7 +181,7 @@ CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
 ....................    { 
 ....................       b=1; 
 0071:  MOVLW  01
-0072:  MOVWF  2C
+0072:  MOVWF  28
 ....................       while(BUT_2==1) 
 0073:  BSF    03.5
 0074:  BSF    06.5
@@ -202,11 +190,11 @@ CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
 0077:  GOTO   07C
 ....................          {delay_ms(1);} 
 0078:  MOVLW  01
-0079:  MOVWF  2F
+0079:  MOVWF  29
 007A:  CALL   02F
 007B:  GOTO   073
 ....................       while(b==1) 
-007C:  DECFSZ 2C,W
+007C:  DECFSZ 28,W
 007D:  GOTO   095
 ....................       { 
 ....................           
@@ -227,7 +215,7 @@ CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
 0088:  GOTO   094
 ....................             { 
 ....................                b=0; 
-0089:  CLRF   2C
+0089:  CLRF   28
 ....................                break; 
 008A:  GOTO   095
 ....................                while(BUT_1==1) 
@@ -238,7 +226,7 @@ CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
 008F:  GOTO   094
 ....................          {delay_ms(1);} 
 0090:  MOVLW  01
-0091:  MOVWF  2F
+0091:  MOVWF  29
 0092:  CALL   02F
 0093:  GOTO   08B
 ....................             } 
@@ -256,34 +244,30 @@ CCS PCM C Compiler, Version 5.025, 5967               23-Oct-17 16:19
 009A:  MOVF   03,W
 009B:  ANDLW  1F
 009C:  MOVWF  03
-009D:  CLRF   2B
-009E:  CLRF   2C
-009F:  CLRF   2D
-00A0:  CLRF   2E
-00A1:  BSF    03.5
-00A2:  BSF    1F.0
-00A3:  BSF    1F.1
-00A4:  BSF    1F.2
-00A5:  BCF    1F.3
-00A6:  MOVLW  07
-00A7:  MOVWF  1C
-00A8:  BCF    03.7
+009D:  CLRF   27
+009E:  CLRF   28
+009F:  BSF    03.5
+00A0:  BSF    1F.0
+00A1:  BSF    1F.1
+00A2:  BSF    1F.2
+00A3:  BCF    1F.3
+00A4:  MOVLW  07
+00A5:  MOVWF  1C
+00A6:  BCF    03.7
 .................... { 
 ....................    output_d(0x00); 
-*
-00B2:  BSF    03.5
-00B3:  CLRF   08
-00B4:  BCF    03.5
-00B5:  CLRF   08
+00A7:  CLRF   08
+00A8:  BCF    03.5
+00A9:  CLRF   08
 ....................    clear_interrupt(INT_RB); 
-00B6:  BCF    0B.0
+00AA:  BCF    0B.0
 ....................    enable_interrupts(INT_RB); 
-00B7:  BSF    0B.3
+00AB:  BSF    0B.3
 ....................    enable_interrupts(GLOBAL);   
-00B8:  MOVLW  C0
-00B9:  IORWF  0B,F
+00AC:  MOVLW  C0
+00AD:  IORWF  0B,F
 .................... } 
-00BA:  SLEEP
+00AE:  SLEEP
 
 Configuration Fuses:
    Word  1: 3F32   HS NOWDT PUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT
