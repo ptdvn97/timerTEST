@@ -1,0 +1,22 @@
+#include <main.h>
+int8 dem=0;
+#int_RTCC
+void  RTCC_isr(void)
+{
+   dem=dem+1;
+   if(dem>=76)
+   {
+      output_d(0x00);
+      dem=0;
+   }
+}
+
+void main()
+{  
+   output_d(0xFF);
+   setup_timer_0(RTCC_INTERNAL|RTCC_DIV_4);
+   set_timer0(0);
+   enable_interrupts(INT_RTCC);
+   enable_interrupts(GLOBAL);
+   
+}

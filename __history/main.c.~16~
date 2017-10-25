@@ -1,0 +1,19 @@
+#include <main.h>
+int8 dem=0;
+#INT_TIMER0
+void ngatTimer()
+{
+   dem=dem+1;
+   if(dem==76)
+   {
+      output_bit(PIN_D0,0);
+      dem=0;
+   }
+}
+
+void main()
+{  
+   output_bit(PIN_D0,1);
+   setup_timer_0(T0_INTERNAL|T0_DIV_256);
+   set_timer0(0);
+}
