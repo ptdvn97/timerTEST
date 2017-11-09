@@ -1,4 +1,12 @@
->>> Warning 203 "main.c" Line 10(1,1): Condition always TRUE
-      Memory usage:   ROM=2%      RAM=4% - 4%
-      0 Errors,  1 Warnings.
-Build Successful.
+*** Error 28 "main.c" Line 12(5,7): Expecting an identifier
+*** Error 43 "main.c" Line 12(7,8): Expecting a declaration
+*** Error 43 "main.c" Line 12(8,9): Expecting a declaration
+*** Error 43 "main.c" Line 12(9,11): Expecting a declaration
+*** Error 43 "main.c" Line 12(10,11): Expecting a declaration
+*** Error 43 "main.c" Line 12(11,12): Expecting a declaration
+*** Error 43 "main.c" Line 12(12,13): Expecting a declaration
+*** Error 49 "main.c" Line 20(7,9): Expecting LVALUE such as a variable name  or  * expression
+*** Error 12 "main.c" Line 25(10,16): Undefined identifier   OUTPUT
+*** Error 49 "main.c" Line 28(16,18): Expecting LVALUE such as a variable name  or  * expression
+*** Error 49 "main.c" Line 37(7,9): Expecting LVALUE such as a variable name  or  * expression
+*** Error 49 "main.c" Line 65(16,18): Expecting LVALUE such as a variable name  or  * expression
